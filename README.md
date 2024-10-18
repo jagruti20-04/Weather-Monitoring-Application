@@ -64,20 +64,28 @@ The Weather Monitoring Application is a Java-based application designed to fetch
    cd weather-monitoring
 
 
-Configuration of MySQL database:
+## Configuration of MySQL database:
 
 Create a new database named weather_monitoring.
 Update the application.properties file with your database connection details.
 
 spring.datasource.url=jdbc:mysql://localhost:3306/weather_monitoring
+
 spring.datasource.username=your_username
+
 spring.datasource.password=your_password
+
 spring.jpa.hibernate.ddl-auto=update
 
 
-Add your OpenWeatherMap API key in the application.properties:
+## Add your OpenWeatherMap API key in the application.properties:
 
 weather.api.key=your_api_key
+If you do not have an API key, you can obtain one by signing up at [OpenWeatherMap](https://openweathermap.org/).
+
+ update your api key at WeatherService also
+  private final String API_KEY = "your_api_key";
+
 
 Build the project using Maven:
 
@@ -104,9 +112,12 @@ Threshold Management: To view or set threshold values for weather parameters, us
 http://localhost:8080/threshold
 
 
-API Endpoints
+## API Endpoints
 GET /weather/{city}: Fetches current weather data for the specified city.
 GET /summary/{city}: Retrieves the daily weather summary for the specified city.
+GET /index: Access the main page of the application.
+GET /threshold: To view or set threshold values for weather parameters.
+
 
 Database Schema
 The application uses the following tables:
@@ -114,25 +125,40 @@ The application uses the following tables:
 daily_weather_summary
 
 Column Name     	        Data Type
+
 id	                      BIGINT
+
 date	                    DATE
+
 average_temperature	      DOUBLE
+
 max_temperature	          DOUBLE
+
 min_temperature	          DOUBLE
+
 dominant_condition	      VARCHAR(255)
+
 city	                    VARCHAR(255)
 
     
 weather_data
 
 Column Name	        Data Type
+
 id	                BIGINT
+
 date_time	          DATETIME
+
 city	              VARCHAR(255)
+
 temperature	        DOUBLE
+
 feels_like	        DOUBLE
+
 weather_condition	  VARCHAR(255)
+
 wind_speed	        DOUBLE
+
 humidity	          INT
 
 
