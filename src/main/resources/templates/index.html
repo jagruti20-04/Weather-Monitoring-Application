@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e9ecef;
+            font-family: 'Arial', sans-serif;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 100px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .btn-primary {
+            padding: 12px 20px;
+            font-size: 1.2rem;
+        }
+        .form-control {
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .footer {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Weather Monitoring</h1>
+        <form id="cityForm" action="/weather" method="POST" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="city">Enter City Name:</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="e.g., Indore" required>
+                <small id="cityHelp" class="form-text text-muted">Please enter a valid city name.</small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Weather Monitoring System</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm() {
+            const cityInput = document.getElementById("city").value;
+            const cityHelp = document.getElementById("cityHelp");
+            if (cityInput.trim() === "") {
+                cityHelp.textContent = "City name cannot be empty.";
+                return false;
+            }
+            cityHelp.textContent = "Please enter a valid city name.";
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Weather Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        table {
+            margin-bottom: 30px;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        th, td {
+            text-align: center;
+            padding: 12px;
+        }
+        td {
+            border: 1px solid #dee2e6;
+        }
+        .btn-secondary {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Daily Weather Summary</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Average Temperature (°C)</th>
+                    <th>Max Temperature (°C)</th>
+                    <th>Min Temperature (°C)</th>
+                    <th>Dominant Weather Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="summary : ${summaries}">
+                    <td th:text="${summary.formattedDate}"></td>
+                    <td th:text="${summary.averageTemperature}"></td>
+                    <td th:text="${summary.maxTemperature}"></td>
+                    <td th:text="${summary.minTemperature}"></td>
+                    <td th:text="${summary.dominantCondition}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="text-center">Averages</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Average Temperature (°C)</th>
+                    <th>Average Max Temperature (°C)</th>
+                    <th>Average Min Temperature (°C)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${averages.averageTemperature}"></td>
+                    <td th:text="${averages.maxTemperature}"></td>
+                    <td th:text="${averages.minTemperature}"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a href="/index" class="btn btn-secondary btn-block">Back to Weather</a>
+    </div>
+</body>
+</html>

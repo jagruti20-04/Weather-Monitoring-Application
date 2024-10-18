@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Thresholds</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color for contrast */
+            font-family: 'Arial', sans-serif; /* Consistent font */
+            color: #343a40; /* Dark text color for readability */
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff; /* White background for the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 40px; /* Increased padding for more space */
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: bold; /* Bold text */
+            color: #007bff; /* Blue color for heading */
+        }
+        .table {
+            border-radius: 10px; /* Rounded table corners */
+            overflow: hidden; /* Hide overflow for rounded corners */
+        }
+        .table th, .table td {
+            vertical-align: middle; /* Center-align cell contents */
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2; /* Light gray for odd rows */
+        }
+        .table-striped tbody tr:hover {
+            background-color: #e9ecef; /* Highlight row on hover */
+        }
+        .status {
+            font-weight: bold; /* Bold status text */
+        }
+        .status-active {
+            color: #28a745; /* Green for active status */
+        }
+        .status-inactive {
+            color: #dc3545; /* Red for inactive status */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Alert Thresholds</h1>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Threshold Type</th>
+                    <th>Value</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="threshold : ${thresholds}">
+                    <td th:text="${threshold['type']}"></td>
+                    <td th:text="${threshold['value']}"></td>
+                    <td th:text="${threshold['status']}" 
+                        th:class="${threshold['status'] == 'Active'} ? 'status status-active' : 'status status-inactive'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

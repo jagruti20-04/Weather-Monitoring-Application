@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color for contrast */
+            font-family: 'Arial', sans-serif; /* Consistent font */
+            color: #343a40; /* Dark text color for readability */
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff; /* White background for the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 40px; /* Increased padding for more space */
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: bold; /* Bold text */
+            color: #007bff; /* Blue color for heading */
+        }
+        .weather-detail {
+            margin-bottom: 15px; /* Space between weather details */
+            font-size: 1.2rem; /* Increased font size for readability */
+        }
+        .btn {
+            margin: 5px; /* Space around buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Weather for <span th:text="${weather.city}"></span></h1>
+        <div>
+            <p class="weather-detail">Temperature: <span th:text="${weather.temperature}"></span>°C</p>
+            <p class="weather-detail">Feels Like: <span th:text="${weather.feelsLike}"></span>°C</p>
+            <p class="weather-detail">Condition: <span th:text="${weather.weatherCondition}"></span></p>
+            <p class="weather-detail">Date and Time: <span th:text="${formattedDateTime}"></span></p>
+            <p class="weather-detail">Humidity: <span th:text="${weather.humidity}"></span>%</p>
+            <p class="weather-detail">Wind Speed: <span th:text="${weather.windSpeed}"></span> m/s</p>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a th:href="@{/summary(city=${weather.city})}" class="btn btn-primary btn-lg">View Daily Weather Summary</a>
+            <a href="/alert/thresholds" class="btn btn-warning btn-lg">View Alert Thresholds</a>
+        </div>
+
+        <a href="/index" class="btn btn-secondary btn-lg mt-3">Check Another City</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
