@@ -81,20 +81,22 @@ spring.jpa.hibernate.ddl-auto=update
 ## Add your OpenWeatherMap API key in the application.properties:
 
 weather.api.key=your_api_key
+
 If you do not have an API key, you can obtain one by signing up at [OpenWeatherMap](https://openweathermap.org/).
 
- update your api key at WeatherService also
-  private final String API_KEY = "your_api_key";
+ update your api key at WeatherService also.
+ 
+ private final String API_KEY = "your_api_key";
 
 
-Build the project using Maven:
+## Build the project using Maven:
 
 mvn clean install
 
 Run the application:
 mvn spring-boot:run
 
-Usage
+#  Usage
 To fetch weather data for a specific city, use the following endpoint:
 
  http://localhost:8080/weather/{city}
@@ -119,10 +121,10 @@ GET /index: Access the main page of the application.
 GET /threshold: To view or set threshold values for weather parameters.
 
 
-Database Schema
+## Database Schema
 The application uses the following tables:
 
-daily_weather_summary
+# daily_weather_summary
 
 Column Name     	        Data Type
 
@@ -142,7 +144,7 @@ city	                    VARCHAR(255)
 
 
     
-weather_data
+# weather_data
 
 
 Column Name	        Data Type
@@ -165,7 +167,7 @@ humidity	          INT
 
 
 
-Acknowledgements
+## Acknowledgements
 
 OpenWeatherMap API for weather data.
 
