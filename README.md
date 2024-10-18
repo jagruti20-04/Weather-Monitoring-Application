@@ -140,8 +140,10 @@ dominant_condition	      VARCHAR(255)
 
 city	                    VARCHAR(255)
 
+
     
 weather_data
+
 
 Column Name	        Data Type
 
@@ -162,8 +164,11 @@ wind_speed	        DOUBLE
 humidity	          INT
 
 
+
 Acknowledgements
+
 OpenWeatherMap API for weather data.
+
 Spring Boot and Hibernate for simplifying database operations.
 
 
